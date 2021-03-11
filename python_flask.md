@@ -1,6 +1,6 @@
 # 1. Setup
 
-1.1. Tạo file ```requirements.txt```
+## 1.1. Tạo file ```requirements.txt```
 
 * ```requirements.txt``` là file chứa các thư viện cần thiết cho project
 
@@ -16,7 +16,7 @@ pip freeze > requirements.txt
 pip install -r requirements.txt
 ```
 
-1.2. Tạo environment cho project
+## 1.2. Tạo environment cho project
 
 * Tạo folder env
 
@@ -52,7 +52,7 @@ pip install flask
 
 # 2. Tạo web app sử dụng Flask
 
-2.1. Tạo file app.py:
+## 2.1. Tạo file app.py:
 
 ```py
 from flask import Flask
@@ -63,13 +63,14 @@ def home():
     return "Hello, Flask!"
 ```
 
-2.2. Chạy app:
+## 2.2. Chạy app
 
 ```py
 python -m flask run
 ```
 
-2.3. Chạy app ở chế độ debug
+## 2.3. Chạy app ở chế độ debug
+
 Chọn Run and Debug trên VS code, chọn ```create a launch.json file```, cấu hình ```Flask```. VS code sẽ tạo file ```launch.json```:
 
 ```json
