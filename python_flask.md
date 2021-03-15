@@ -125,7 +125,19 @@ Bấm ```F5``` để debug app
 On Linux and macOS, use ```export set FLASK_APP=webapp```; on Windows use ```set FLASK_APP=webapp```
 
 ```py
-python -m flask run.
+python -m flask run
+```
+
+Có thể lưu trữ các biến môi trường trong file ```.flaskenv``` như sau:
+
+```py
+pip3 install python-dotenv
+```
+
+File ```.flaskenv```
+
+```config
+FLASK_APP = myblog.py
 ```
 
 # 4. Tham khảo thêm
