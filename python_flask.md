@@ -14,7 +14,9 @@
 
 [3. Chạy ứng dụng bằng terminal](#3-chạy-ứng-dụng-bằng-terminal)
 
-[4. Tham khảo thêm](#4-tham-khảo-thêm)
+[4. Debug](#4-debug)
+
+[5. Tham khảo thêm](#5-tham-khảo-thêm)
 
 # 1. Setup
 
@@ -140,7 +142,74 @@ File ```.flaskenv```
 FLASK_APP = myblog.py
 ```
 
-# 4. Tham khảo thêm
+# 4. Debug
+
+Có các cách debug sau:
+
+- Debug trực tiếp từ VS code: chọn view debug trên VScode, chọn ```create a launch.json file```, tạo file launch.json theo hướng dẫn
+
+    ```json
+    {
+        "name": "Python: Flask",
+        "type": "python",
+        "request": "launch",
+        "module": "flask",
+        "env": {
+            "FLASK_APP": "app.py",
+            "FLASK_ENV": "development",
+            "FLASK_DEBUG": "0"
+        },
+        "args": [
+            "run",
+            "--no-debugger",
+            "--no-reload"
+        ],
+        "jinja": true
+    },
+    ```
+
+- Debug từ bằng docker container
+  
+  - Mở ```Command Palette``` (```Ctrl+Shift+P``` hoặc ```F1```), chạy lệnh ```docker add ```
+  
+    ![alt](https://code.visualstudio.com/assets/docs/containers/quickstarts/python-add-python.png)
+
+  Làm theo các bước hướng dẫn. Sau khi xong chọn chế độ debug bằng ```Docker: ...```
+
+- Debug bằng docker-compose:
+
+  - Tạo Dockerfile từ các bước như trên, nội dung file như sau:
+
+    ```docker
+    # For more information, please refer to https://aka.ms/vscode-docker-python
+
+    FROM python:3.8-slim-buster as base
+
+    WORKDIR /app
+    COPY ./src /app
+
+    # Install pip requirements
+    COPY requirements.txt .
+    RUN python -m pip install -r requirements.txt
+
+    ENV FLASK_APP=webapp.py
+
+    #########DEBUGGER###########
+
+    FROM base as debug
+    RUN pip install ptvsd
+
+    # WORKDIR /app
+
+    CMD python -m ptvsd --host 0.0.0.0 --port 5678 --wait --multiprocess -m flask run -h 0.0.0 -p 5000
+
+    #########PROD###########
+    FROM base as prod
+
+    CMD flask run -h 0.0.0 -p 5000
+    ```
+
+# 5. Tham khảo thêm
 
 [Flask Tutorial in Visual Studio Code](https://code.visualstudio.com/docs/python/tutorial-flask)
 
