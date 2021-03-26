@@ -40,7 +40,16 @@ pip install -r requirements.txt
 
 - Tạo folder env
 
-```py
+python2
+
+```python
+pip install --upgrade pip==20.3.4
+pip install virtualenv && virtualenv .env
+```
+
+python3
+
+```python
 python -m venv env
 ```
 
@@ -60,13 +69,13 @@ env\Scripts\activate
 
 - Update ```pip``` trong env:
 
-```py
+```bash
 python -m pip install --upgrade pip
 ```
 
 - Cài đặt ```flask```
 
-```pip
+```bask
 pip install flask
 ```
 
