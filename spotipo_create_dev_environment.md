@@ -110,3 +110,16 @@ Nếu ra path từ folder spotipo thì đã ok
 ```bash
 pip install -r requirements.txt
 ```
+
+# 5. Ubuntu >21
+
+- Lỗi install MySQL-python
+my_config.h: No such file or directory
+
+```bash
+sudo apt-get install python2.7-dev default-libmysqlclient-dev build-essential
+
+sudo wget <https://raw.githubusercontent.com/paulfitz/mysql-connector-c/master/include/my_config.h> -O /usr/include/mysql/my_config.h
+
+sudo pip install MySQL-python
+```
