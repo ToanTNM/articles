@@ -119,7 +119,7 @@ my_config.h: No such file or directory
 ```bash
 sudo apt-get install python2.7-dev default-libmysqlclient-dev build-essential
 
-sudo wget <https://raw.githubusercontent.com/paulfitz/mysql-connector-c/master/include/my_config.h> -O /usr/include/mysql/my_config.h
+sudo wget https://raw.githubusercontent.com/paulfitz/mysql-connector-c/master/include/my_config.h -O /usr/include/mysql/my_config.h
 
 sudo pip install MySQL-python
 ```
