@@ -39,9 +39,12 @@ sudo apt install python-minimal
 ```
 
 Check lại version (2.7.12)
-python --version
 
-Cài đặt pip
+```bash
+python --version
+```
+
+Cài đặt ```pip```
 
 ```bash
 sudo apt install python-pip
@@ -70,7 +73,8 @@ code /mnt/d/Dev/spotipo
 Ubuntu sẽ tự động cài đặt và chạy VScode
 
 Cài đặt các package sau để tránh lỗi khi cài đặt các thư viện:
-Lỗi EnvironmentError: mysql_config not found
+
+- Lỗi EnvironmentError: mysql_config not found
 
 ```bash
 sudo apt-get install libmysqlclient-dev
@@ -96,8 +100,9 @@ Thêm hoặc tạo mới file ```/etc/wsl.conf``` với nội dung:
 ```bash
 [automount]
 options = "metadata"
-Khởi động lại
 ```
+
+Khởi động lại PC
 
 ```bash
 source .env/bin/activate
@@ -110,6 +115,8 @@ Nếu ra path từ folder spotipo thì đã ok
 ```bash
 pip install -r requirements.txt
 ```
+
+Lưu ý: Tắt autoupdate extension và dùng extension ```Python``` version ```v2021.1.502429796```
 
 # 5. Ubuntu >21
 
