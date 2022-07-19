@@ -51,7 +51,7 @@ If bar.html[status] != SUCCESS > No Network
 
     Điều này cho phép các thiết bị được cache chứng thực sau khi đăng nhập thành công qua bản tin XML khác. Nghĩa là có thể lấy xác thực của người khác để sử dụng mạng bình thường.
 
-    Từ ```iOS 7```, ```Apple``` sử dụng User Agent "CaptiveNetworkSupport". Lý do là người dùng có thể sử dụng các app hay trình duyệt khác nhau 
+    Từ ```iOS 7```, ```Apple``` sử dụng User Agent "CaptiveNetworkSupport". Lý do là người dùng có thể sử dụng các app hay trình duyệt khác nhau
 
 # Tham khảo thêm
 
