@@ -95,7 +95,7 @@
 
   - `mutation`: modify server-side data
 
-  - `subcription`: 
+  - `subcription`: stream data
 
 - **Directives**
 
@@ -116,7 +116,6 @@
     "withFriends": true
   }
   ```
-
 
 ## References
 
