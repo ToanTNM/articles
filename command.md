@@ -47,3 +47,9 @@ git remote add origin git@github.com:ToanTNM/caligo.git
 git branch -M main
 git push -u origin main
 ```
+
+1. `docker` command
+
+`docker run --rm -p 80:80 [imageName]`
+
+`docker logs [containerName or id] -f`
