@@ -1,4 +1,4 @@
-1. Maven
+1. Maven command
 
 Run: `./mvnw spring-boot:run`
 
@@ -8,7 +8,7 @@ Clean build (to native):  `./mvnw clean package -Pnative`
 
 Build to docker image: `./mvnw spring-boot:build-image`
 
-1. Gradle
+1. Gradle command
 
 Run:  `./gradlew bootRun`
 
