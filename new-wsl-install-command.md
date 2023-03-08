@@ -56,6 +56,7 @@
     Install `sdk`
 
     ```bash
+    sudo apt install zip unzip
     curl -s "https://get.sdkman.io" | bash
     source "/home/tps/.sdkman/bin/sdkman-init.sh"
     ```
