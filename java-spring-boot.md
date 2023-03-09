@@ -139,9 +139,9 @@ public class App {
 
   ```@Bean``` là một Annotation được đánh dấu trên các method cho phép Spring Boot biết được đây là Bean và sẽ thực hiện đưa Bean này vào Context.   ```@Bean``` sẽ nằm trong các class có đánh dấu ```@Configuration```.
 
->```@Value``` được sử dụng trên attribute của class, Có nhiệm vụ lấy thông tin từ file ```.properties``` và gán vào biến.
+>`@Value` được sử dụng trên attribute của class, Có nhiệm vụ lấy thông tin từ file `.properties` và gán vào biến.
 
-> ```@RequestBody``` chuyển JSON thành Object tương ứng
+>`@RequestBody` chuyển JSON thành Object tương ứng
 
   ```java
   @RestController
@@ -161,7 +161,7 @@ public class App {
   }
   ```
 
->```@PathVariable``` lấy thông tin từ url
+>`@PathVariable` lấy thông tin từ url
 
   ```java
   @RestController
@@ -180,7 +180,7 @@ public class App {
   }
   ```
 
->```@ResponseStatus``` định nghĩa Http Status trả về cho người dùng.
+>`@ResponseStatus` định nghĩa Http Status trả về cho người dùng.
 
 Nếu không muốn sử dụng ```ResponseEntity``` thì có thể dùng ```@ResponseStatus``` đánh dấu trên Object trả về.
 
