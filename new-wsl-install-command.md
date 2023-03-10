@@ -2,74 +2,76 @@
 
 1. In window `Powershell` or `cmd`
 
-    Set wsl default version: `wsl --set-default-version 2`
+   Set wsl default version: `wsl --set-default-version 2`
 
-    List wsl distro installed with version info: `wsl -l -v`
+   List wsl distro installed with version info: `wsl -l -v`
 
-    List wsl distro available: `wsl -l -o`
+   List wsl distro available: `wsl -l -o`
 
-    Change existing wsl to version 2: `wsl --set-version Ubuntu-22.04 2`
+   Change existing wsl to version 2: `wsl --set-version Ubuntu-22.04 2`
 
-    Set wsl distro to default: `wsl --setdefault Ubuntu-22.04`
+   Set wsl distro to default: `wsl --setdefault Ubuntu-22.04`
 
-    Launch and connect to wsl distro: `wsl -d Ubuntu-22.04`
+   Launch and connect to wsl distro: `wsl -d Ubuntu-22.04`
 
-    If error, run command:
+   If error, run command:
 
-    ```bash
-    dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
-    bcdedit /set hypervisorlaunchtype auto
-    ```
+   ```bash
+   dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
+   bcdedit /set hypervisorlaunchtype auto
+   ```
 
 1. On `wsl`
 
-    Update available package to new version:
+   Update available package to new version:
 
-    ```bash
-    sudo apt update
-    sudo apt upgrade
-    ```
+   ```bash
+   sudo apt update
+   sudo apt upgrade
+   ```
 
-    Install docker:
+   Install docker:
 
-    ```bash
-    curl -fsSL <https://get.docker.com> -o get-docker.sh
-    sudo sh ./get-docker.sh --dry-run
-    ```
+   ```bash
+   curl -fsSL <https://get.docker.com> -o get-docker.sh
+   sudo sh ./get-docker.sh --dry-run
+   ```
 
-    Add docker run command as root user:
+   Add docker run command as root user:
 
-    ```bash
-    sudo groupadd docker
-    sudo usermod -aG docker $USER
-    ```
+   ```bash
+   sudo groupadd docker
+   sudo usermod -aG docker $USER
+   ```
 
-    Add github ssh key:
+   Add github ssh key:
 
-    ```bash
-    ssh-keygen -t ed25519 -C "tnmtoan@yahoo.com"
-    eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/id_ed25519
-    cat ~/.ssh/id_ed25519.pub #copy this result and add to github
-    ```
+   ```bash
+   git config --global user.name "ToanTNM"
+   git config --global user.email "tnmtoan@yahoo.com"
+   ssh-keygen -t ed25519 -C "tnmtoan@yahoo.com"
+   eval "$(ssh-agent -s)"
+   ssh-add ~/.ssh/id_ed25519
+   cat ~/.ssh/id_ed25519.pub #copy this result and add to github
+   ```
 
-    Install `sdk`
+   Install `sdk`
 
-    ```bash
-    sudo apt install zip unzip
-    curl -s "https://get.sdkman.io" | bash
-    source "/home/tps/.sdkman/bin/sdkman-init.sh"
-    ```
+   ```bash
+   sudo apt install zip unzip
+   curl -s "https://get.sdkman.io" | bash
+   source "/home/tps/.sdkman/bin/sdkman-init.sh"
+   ```
 
 1. Install VScode
 
-    ```bash
-    code .
-    code --install-extension esbenp.prettier-vscode
-    code --install-extension dbaeumer.vscode-eslint
+   ```bash
+   code .
+   code --install-extension esbenp.prettier-vscode
+   code --install-extension dbaeumer.vscode-eslint
 
-    # Java
-    code --install-extension vscjava.vscode-java-pack
-    ```
+   # Java
+   code --install-extension vscjava.vscode-java-pack
+   ```
 
-    `code --list-extensions`
+   Check which extensions is installed: `code --list-extensions`
