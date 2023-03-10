@@ -66,6 +66,7 @@
     ```bash
     code .
     code --install-extension esbenp.prettier-vscode
+    code --install-extension dbaeumer.vscode-eslint
 
     # Java
     code --install-extension vscjava.vscode-java-pack
