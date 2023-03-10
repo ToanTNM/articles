@@ -60,3 +60,15 @@
     curl -s "https://get.sdkman.io" | bash
     source "/home/tps/.sdkman/bin/sdkman-init.sh"
     ```
+
+1. Install VScode
+
+    ```bash
+    code .
+    code --install-extension esbenp.prettier-vscode
+
+    # Java
+    code --install-extension vscjava.vscode-java-pack
+    ```
+
+    `code --list-extensions`
