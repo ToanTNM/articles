@@ -55,3 +55,13 @@
     `docker run --rm -p 80:80 [imageName]`
 
     `docker logs [containerName or id] -f`
+
+1. `flyctl` / `fly` command
+
+    ```sh
+    fly postgres create
+
+    flyctl postgres connect -a [app-name] # then we can run pg command
+
+    flyctl proxy 5432 -a [app-name] # then we can connect via postgres://localhost:5432
+    ```
