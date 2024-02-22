@@ -5,8 +5,14 @@
   ```sh
   curl -sS https://starship.rs/install.sh > starship.sh
   sudo sh starship.sh
+
+  // move starship to ~/bin
+  mkdir ~/bin
+  mv /usr/local/bin/starship ~/bin
   vi ~/.bashrc
+
   // add this line to ~/.bashrc
+  PATH="/home/$USER/bin:$PATH"
   eval "$(starship init bash)"
   ```
 
