@@ -35,6 +35,28 @@
   wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
   ```
 
+`.bashrc` after config
+
+  ```sh
+  if [ -d "$HOME/bin" ] ; then
+    PATH="$PATH:$HOME/bin"
+  fi
+  
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  
+  eval "$(starship init bash)"
+  
+  # pnpm
+  export PNPM_HOME="/home/toantran/.local/share/pnpm"
+  case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+  esac
+  # pnpm end
+  ```
+
 ## Install extension
 
 ### Install extension
@@ -69,6 +91,8 @@
   ```
 
 ## Config settings
+
+Import `toan` profile or do it manual: 
 
 Open `Preferences: Open Remote Settings (JSON)`, copy below to `settings.json`
 
