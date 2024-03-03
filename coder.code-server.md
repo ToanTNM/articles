@@ -5,7 +5,61 @@
 
 ### New: Install by modify Dockerfile
 
-Dockerfile - v1.91 - 2024-03-01 22:30
+- Dockerfile - v1.95 - 2024-03-03 21:15
+  
+  ```Dockerfile
+  FROM ubuntu
+  
+  # User pass from local.username in `main.tf`
+  ARG USER=coder 
+  ARG NODE_VERSION=21.6.2
+  
+  RUN apt-get update && \
+      apt-get install -y \
+      curl \
+      git \
+      sudo \
+      vim \
+      software-properties-common \
+      wget && \
+      rm -rf /var/lib/apt/lists/*
+  
+  # Install docker
+  RUN curl -sSL https://get.docker.com/ | sh
+  
+  RUN apt-add-repository ppa:fish-shell/release-3 \
+      && apt-get install -y fish 
+  
+  RUN useradd --groups sudo --shell /bin/bash ${USER} \
+      && sudo usermod -aG docker ${USER} \
+      && echo "${USER} ALL=(ALL) NOPASSWD:ALL" >/etc/sudoers.d/${USER} \
+      && chmod 0440 /etc/sudoers.d/${USER}
+  USER ${USER}
+  WORKDIR /home/${USER}
+  
+  SHELL ["fish", "--command"]
+  
+  RUN sudo chsh -s $(which fish) $(whoami)
+  
+  ENV SHELL /usr/bin/fish
+  ENV LANG=C.UTF-8 LANGUAGE=C.UTF-8 LC_ALL=C.UTF-8
+  
+  # Install starship
+  RUN curl -sS https://starship.rs/install.sh | sudo sh -s -- -y
+  RUN mkdir -p ~/.config/fish \
+      && echo 'starship init fish | source' >> ~/.config/fish/config.fish
+  
+  # Install nvm
+  RUN curl -sL https://git.io/fisher | source \
+      && fisher install jorgebucaran/fisher jorgebucaran/nvm.fish
+  
+  # Install nodejs and tools
+  RUN nvm install $NODE_VERSION \
+      && npm install -g pnpm \
+      && fish_add_path $HOME/.local/share/nvm/v$NODE_VERSION/bin/
+  ```
+
+- Dockerfile - v1.91 - 2024-03-01 22:30
 
   ```Dockerfile
   FROM ubuntu
