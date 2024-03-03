@@ -1,6 +1,57 @@
+
 # Setup environment
 
-## Install starship
+## Install tools
+
+### New: Install by modify Dockerfile
+
+Dockerfile - v1.91 - 2024-03-01 22:30
+
+  ```Dockerfile
+  FROM ubuntu
+  
+  # User pass from local.username in `main.tf`
+  ARG USER=coder 
+  ARG NODE_VERSION=21
+  
+  RUN apt-get update \
+      && apt-get install -y \
+      curl \
+      git \
+      sudo \
+      vim \
+      wget \
+      && rm -rf /var/lib/apt/lists/*
+  
+  # Install docker
+  RUN curl -sSL https://get.docker.com/ | sh
+  
+  RUN useradd --groups sudo --shell /bin/bash ${USER} \
+      && sudo usermod -aG docker ${USER} \
+      && echo "${USER} ALL=(ALL) NOPASSWD:ALL" >/etc/sudoers.d/${USER} \
+      && chmod 0440 /etc/sudoers.d/${USER}
+  USER ${USER}
+  WORKDIR /home/${USER}
+  
+  RUN touch ~/.bashrc
+  
+  # Install nvm
+  RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+  
+  # Install nodejs and tools
+  RUN bash -c 'source $HOME/.nvm/nvm.sh \
+      && nvm install $NODE_VERSION \
+      && npm install -g pnpm'
+  
+  # Install starship
+  RUN curl -sS https://starship.rs/install.sh | sudo sh -s -- -y
+  RUN echo 'eval "$(starship init bash)"' >> ~/.bashrc
+  ```
+
+---
+### Old: Manual install following below
+
+####  starship
 
   ```sh
   curl -sS https://starship.rs/install.sh > starship.sh
@@ -15,8 +66,8 @@
   PATH="/home/$USER/bin:$PATH"
   eval "$(starship init bash)"
   ```
-
-## Install `nvm`, `nodejs`, `pnpm`
+  
+#### Install `nvm`, `nodejs`, `pnpm`
 
   ```sh
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
@@ -57,7 +108,9 @@
   # pnpm end
   ```
 
-## Install extension
+---
+
+## Install `code-server` extension
 
 ### Install extension
 
