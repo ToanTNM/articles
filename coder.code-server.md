@@ -5,7 +5,7 @@
 
 ### New: Install by modify Dockerfile
 
-- Dockerfile - v1.97 - 2024-03-04 12:15
+- Dockerfile - v1.98 - 2024-03-06 12:15
   
   ```Dockerfile
   FROM ubuntu
@@ -55,6 +55,36 @@
   
   # Install pnpm
   RUN npm install -g pnpm
+  ```
+  
+  Teraform file
+
+  ```tf
+  resource "docker_container" "workspace" {
+  count = data.coder_workspace.me.start_count
+  image = docker_image.main.name
+  # Uses lower() to avoid Docker restriction on container names.
+  name = "coder-${data.coder_workspace.me.owner}-${lower(data.coder_workspace.me.name)}"
+  # Hostname makes the shell more user friendly: coder@my-workspace:~$
+  hostname = data.coder_workspace.me.name
+  # Use the docker gateway if the access URL is 127.0.0.1
+  entrypoint = ["sh", "-c", replace(coder_agent.main.init_script, "/localhost|127\\.0\\.0\\.1/", "host.docker.internal")]
+  env        = ["CODER_AGENT_TOKEN=${coder_agent.main.token}"]
+  host {
+    host = "host.docker.internal"
+    ip   = "host-gateway"
+  }
+  volumes {
+    container_path = "/home/${local.username}"
+    volume_name    = docker_volume.home_volume.name
+    read_only      = false
+  }
+  # Add this for docker
+  volumes {
+    container_path = "/var/run/docker.sock"
+    host_path      = "/var/run/docker.sock"
+    read_only      = false
+  }
   ```
 
   - Dockerfile - v1.95 - 2024-03-03 21:15
