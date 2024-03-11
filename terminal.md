@@ -32,3 +32,6 @@ Set-PSReadLineKeyHandler -Chord "Ctrl+RightArrow" -Function ForwardWord
 Set-PSReadLineOption -Colors @{ InlinePrediction = '#875f5f'}
 ```
 
+### linux terminal
+
+Install and use [fish](https://fishshell.com/) shell
