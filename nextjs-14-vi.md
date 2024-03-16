@@ -64,17 +64,16 @@ const pathname = usePathname();
   - Fetch the specific invoice from your database.
   - Pre-populate the form with the invoice data.
   - Update the invoice data in your database.
- 
-  - `Dynamic route segments` can created by wrapping a folder's name in square brackets. For example, `[id]`, `[post]` or `[slug]`
-    
-  - In addition to `searchParams`, page components also accept a prop called `params` which you can use to access the id
-    
+     
     ```js
       export default async function Page({ params }: { params: { id: string } }) {
       const id = params.id;
       // ...
     }
     ```
+  - `Dynamic route segments` can created by wrapping a folder's name in square brackets. For example, `[id]`, `[post]` or `[slug]`
+    
+  - In addition to `searchParams`, page components also accept a prop called `params` which you can use to access the id
     
 - Next.js serves as a catch-all for unexpected errors in your route segments in `error.tsx` file
 
