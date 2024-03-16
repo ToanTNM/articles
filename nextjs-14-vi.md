@@ -43,16 +43,39 @@ const pathname = usePathname();
 </Link>
 ```
 
-- Search: Implementation steps:
+- Search process:
 
   - Capture the user's input.
   - Update the URL with the search params.
   - Keep the URL in sync with the input field.
   - Update the table to reflect the search query.
 
-- `useSearchParams()` hook vs. the `searchParams` props
-  
-  - `useSearchParams()`: use in Client Component
-  - `searchParams`: use in Server Component
+  - `useSearchParams()` hook vs. the `searchParams` props
+    
+    - `useSearchParams()`: use in Client Component
+    - `searchParams`: use in Server Component
  
-- `useDebouncedCallback` from `use-debounce` to delay running function after specific time
+  - `useDebouncedCallback` from `use-debounce` to delay running function after specific time
+
+- Update process:
+  
+  - Create a new dynamic route segment with the invoice id.
+  - Read the invoice id from the page params.
+  - Fetch the specific invoice from your database.
+  - Pre-populate the form with the invoice data.
+  - Update the invoice data in your database.
+ 
+  - `Dynamic route segments` can created by wrapping a folder's name in square brackets. For example, `[id]`, `[post]` or `[slug]`
+    
+  - In addition to `searchParams`, page components also accept a prop called `params` which you can use to access the id
+    
+    ```js
+      export default async function Page({ params }: { params: { id: string } }) {
+      const id = params.id;
+      // ...
+    }
+    ```
+    
+- Next.js serves as a catch-all for unexpected errors in your route segments in `error.tsx` file
+
+- Use `notFound()` from `next/navigation` to throw (navigate) to `not-found.tsx` page
