@@ -78,3 +78,29 @@ const pathname = usePathname();
 - Next.js serves as a catch-all for unexpected errors in your route segments in `error.tsx` file
 
 - Use `notFound()` from `next/navigation` to throw (navigate) to `not-found.tsx` page
+
+- Form validate:
+
+  - `useFormState()` hook in form
+  - use `zod` to validate at server
+  - Display error in client using `aria-*`:
+    
+    - `aria-describedby` at input fields.
+    - `aria-live`, `aria-atomic` at message.
+    - Example:
+      
+      ```ts
+      <select
+          ...
+          aria-describedby="customer-error"
+        ></select>
+      ...
+      <div id="customer-error" aria-live="polite" aria-atomic="true">
+          {state.errors?.customerId &&
+            state.errors.customerId.map((error: string) => (
+              <p className="mt-2 text-sm text-red-500" key={error}>
+                {error}
+              </p>
+            ))}
+        </div>
+      ```
