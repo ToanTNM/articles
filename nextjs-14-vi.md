@@ -74,6 +74,19 @@ const pathname = usePathname();
   - `Dynamic route segments` can created by wrapping a folder's name in square brackets. For example, `[id]`, `[post]` or `[slug]`
     
   - In addition to `searchParams`, page components also accept a prop called `params` which you can use to access the id
+ 
+  - Next will expose error if using domain different with its default `localhost:3000` in dev environmnet. Add to `next.config.js` this config:
+ 
+    ```js
+      const nextConfig = {
+      experimental: {
+        serverActions: {
+          // allowedForwardedHosts: ['localhost:3000', '8g8q0rph-3000.asse.devtunnels.ms'],
+          allowedOrigins: ['localhost:3000', '8g8q0rph-3000.asse.devtunnels.ms'],
+        },
+      },
+    };
+    ```
     
 - Next.js serves as a catch-all for unexpected errors in your route segments in `error.tsx` file
 
