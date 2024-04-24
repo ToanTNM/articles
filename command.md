@@ -1,5 +1,18 @@
 # Often use command
 
+1. `ubuntu` command
+
+- Find folder by name
+  
+   ```sh
+   # Find folder by name
+   find /path/to/search -type d -name "your-folder-name"
+   find /path/to/search -type d -iname "your-folder-name" # ignore case
+
+   # Copy file by ssh
+   scp source_file user@destination:/path/to/destination
+   ```
+
 1. `Maven` command
 
    Run: `./mvnw spring-boot:run`
@@ -54,9 +67,13 @@
 
 1. `docker` command
 
-   `docker run --rm -p 80:80 [imageName]`
+   ```sh
+   docker run --rm -p 80:80 [imageName]
+   
+   docker logs [containerName or id] -f
 
-   `docker logs [containerName or id] -f`
+   docker cp <containerId>:/file/path/within/container /host/path/target # copy file from container to host
+   ```
 
 1. `flyctl` / `fly` command
 
