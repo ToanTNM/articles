@@ -43,7 +43,7 @@ or
 or
 
   ```sh
-  sudo apt-get uninstall gitlab-runner
+  sudo apt-get remove gitlab-runner
   ```
 
 ## Command
