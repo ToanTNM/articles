@@ -40,6 +40,12 @@ or
   sudo rm -rf /home/gitlab-runner/
   ```
 
+or
+
+  ```sh
+  sudo apt-get uninstall gitlab-runner
+  ```
+
 ## Command
 
   ```sh
@@ -55,6 +61,12 @@ or
   # View registered runner 
   gitlab-runner list
 
+  # Run registered runner 
+  gitlab-runner run
+
   # Verify and delete unused runner
   gitlab-runner verify --delete
+
+  # Remove all runner
+  gitlab-runner unregister --all-runners
   ```
