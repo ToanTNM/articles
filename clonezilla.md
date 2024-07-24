@@ -113,3 +113,77 @@
 1. Shutdown clonezilla server by enter `y`
 
    ![Step 5](/images/clonezilla/step5.png)
+
+## Create clonezilla live
+
+1. After language and keyboard are selected, choose **Start_Clonezilla** -> **device-image**, then mount a working directory, the space should large enough to put the live CD and some temp files. It's recommended to choose local*dev to mount local partition as */home/partimag\_
+
+   When Clonezilla live asks you to choose save or restore disk/partition, choose **exit** to enter command line prompt
+
+1. Run these command
+
+   ```js
+   sudo -i
+
+   // configure the network to update package
+   ocs-live-netcfg
+
+   apt-get purge drbl clonezilla
+   apt-get update
+
+   apt-get -y install drbl clonezilla
+
+   apt-get -y install live-build
+
+   cd /home/partimg
+
+   // create debian iso template to create clonezilla in next step
+   create-debian-live -d sid -i mt
+
+   // create iso file
+   ocs-iso -s -x quiet -j debian-live-for-ocs-mt.iso -i mt -k NONE -g en_US.UTF-8
+
+   // create zip file
+   ocs-live-dev -s -x quiet -j debian-live-for-ocs-mt.iso -i mt -k NONE -g en_US.UTF-8
+   ```
+
+Referrences:
+
+- https://clonezilla.org/create_clonezilla_live_from_scratch.php
+
+- https://github.com/stevenshiau/clonezilla/blob/master/sbin/create-debian-live
+
+- https://github.com/stevenshiau/clonezilla/blob/master/sbin/ocs-iso
+
+## ssh to clonezilla
+
+1. Run step 1 in [Create clonezilla live](#create-clonezilla-live)
+
+1. Start ssh service in clonezilla
+
+   ```js
+   sudo -i
+   // configure the network
+   ocs-live-netcfg
+
+   // start service
+   service ssh start
+   service ssh status
+   ```
+
+1. Connect from client
+
+   ```js
+   // connect to clonezilla and enter password 'live'
+   ssh user@[ip of clonezilla]
+
+   // after connect run command
+   sudo -i
+   ...
+   ```
+
+Referrences:
+
+- https://clonezilla.org/create_clonezilla_live_from_scratch.php
+
+- https://nhattruong.blog/2021/07/12/ssh-vao-may-chu-ubuntu-virtualbox-cau-hinh-nat/
